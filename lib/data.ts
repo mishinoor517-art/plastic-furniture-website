@@ -27,6 +27,7 @@ export interface Category {
   slug: string;
 }
 
+<<<<<<< HEAD
 export interface ColorOption {
   name: string;
   value: string;
@@ -35,10 +36,15 @@ export interface ColorOption {
 export interface Product {
   id: number;
   slug: string;
+=======
+export interface Product {
+  id: number;
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   name: string;
   description: string;
   category: string;
   image: string;
+<<<<<<< HEAD
 
   /*
    * Optional because only products with uploaded
@@ -72,11 +78,18 @@ export interface ProductDetailMeta {
    NAVIGATION CATEGORIES
 ========================================================= */
 
+=======
+  features: string[];
+}
+
+// 5 Main navbar category items, each with custom dropdown sub-items/products
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
 export const navCategories: NavCategory[] = [
   {
     name: "Outdoor Furniture",
     slug: "outdoor-furniture",
     items: [
+<<<<<<< HEAD
       {
         name: "Ocean Chair Set",
         description:
@@ -104,10 +117,19 @@ export const navCategories: NavCategory[] = [
     ],
   },
 
+=======
+      { name: "Ocean Chair Set", description: "Premium weather-resistant seaside seating", href: "#products" },
+      { name: "Royal Dining Set", description: "All-weather dining tables and chairs", href: "#products" },
+      { name: "Elegance Garden Chair", description: "Tough stackable patio armchairs", href: "#products" },
+      { name: "Patio Sun Loungers", description: "Reclining deck chairs for absolute comfort", href: "#products" },
+    ],
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     name: "Indoor Furniture",
     slug: "indoor-furniture",
     items: [
+<<<<<<< HEAD
       {
         name: "Modern Living Lounge",
         description:
@@ -135,10 +157,19 @@ export const navCategories: NavCategory[] = [
     ],
   },
 
+=======
+      { name: "Modern Living Lounge", description: "Sophisticated styling for modern spaces", href: "#products" },
+      { name: "Contemporary Dining", description: "Chic tables and armchairs for family gatherings", href: "#products" },
+      { name: "Premium Loungers", description: "Plush cushions and comfortable armrests", href: "#products" },
+      { name: "Minimalist Accent Tables", description: "Wooden finish low-rise central coffee tables", href: "#products" },
+    ],
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     name: "Kids Furniture",
     slug: "kids-furniture",
     items: [
+<<<<<<< HEAD
       {
         name: "Activity Study Desks",
         description:
@@ -166,10 +197,19 @@ export const navCategories: NavCategory[] = [
     ],
   },
 
+=======
+      { name: "Activity Study Desks", description: "Ergonomic tables for early learning", href: "#products" },
+      { name: "Safety First Chairs", description: "Rounded edges, lightweight & durable build", href: "#products" },
+      { name: "Playroom Storage Chests", description: "Charming cabinets to organize toys and books", href: "#products" },
+      { name: "Theme Bedroom Sets", description: "Comfortable kids beds and wardrobes", href: "#products" },
+    ],
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     name: "Office Furniture",
     slug: "office-furniture",
     items: [
+<<<<<<< HEAD
       {
         name: "Adjustable Swivel Chair",
         description:
@@ -197,10 +237,19 @@ export const navCategories: NavCategory[] = [
     ],
   },
 
+=======
+      { name: "Adjustable Swivel Chair", description: "Ergonomic office seat with full-height adjustment", href: "#products" },
+      { name: "Professional Bar Stools", description: "Modern seating for counters, bars & cafes", href: "#products" },
+      { name: "Modern Workstation Desks", description: "Sleek office desks with built-in cable paths", href: "#products" },
+      { name: "Ergonomic Footrests", description: "Comfortable support accessories for workspaces", href: "#products" },
+    ],
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     name: "Moulded Range",
     slug: "moulded-range",
     items: [
+<<<<<<< HEAD
       {
         name: "Modern Lounge Chairs",
         description:
@@ -225,86 +274,139 @@ export const navCategories: NavCategory[] = [
           "Easy-to-store stools and utility chairs",
         href: "#products",
       },
+=======
+      { name: "Modern Lounge Chairs", description: "Glossy contemporary moulded seating", href: "#products" },
+      { name: "Elegance Heavy Armchairs", description: "Sturdy, built-to-last moulded chairs", href: "#products" },
+      { name: "Royal Premium Armchairs", description: "Virgin plastic seat with high-load capacity", href: "#products" },
+      { name: "Stackable Space Savers", description: "Easy-to-store stools and utility chairs", href: "#products" },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
     ],
   },
 ];
 
+<<<<<<< HEAD
 /* =========================================================
    HERO SLIDES
 ========================================================= */
 
+=======
+// Exactly 5 Hero slides using uploaded images
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
     image: "/images/hero-1.jpg",
     tagline: "Relax in Style",
     title: "MODERN LOUNGE CHAIR",
+<<<<<<< HEAD
     description:
       "Designed for modern spaces, the Modern Lounge Chair combines elegant design with everyday comfort. Perfect for homes, cafés, lounges, and waiting areas.",
     exploreHref: "#categories",
     shopHref: "#products",
   },
 
+=======
+    description: "Designed for modern spaces, the Modern Lounge Chair combines elegant design with everyday comfort. Perfect for homes, cafés, lounges, and waiting areas.",
+    exploreHref: "#categories",
+    shopHref: "#products",
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 2,
     image: "/images/hero-2.jpg",
     tagline: "Royal Comfort",
     title: "PREMIUM MOULDED ARM CHAIR",
+<<<<<<< HEAD
     description:
       "Royal Comfort Chair is designed for durability, style, and everyday comfort. Made from high-quality moulded plastic, it is perfect for indoor and outdoor use in homes, cafes, and commercial spaces.",
     exploreHref: "#categories",
     shopHref: "#products",
   },
 
+=======
+    description: "Royal Comfort Chair is designed for durability, style, and everyday comfort. Made from high-quality moulded plastic, it is perfect for indoor and outdoor use in homes, cafes, and commercial spaces.",
+    exploreHref: "#categories",
+    shopHref: "#products",
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 3,
     image: "/images/hero-3.jpg",
     tagline: "Ocean Theme",
     title: "OUTDOOR CHAIR SET",
+<<<<<<< HEAD
     description:
       "Weather resistant, rustproof frame, comfortable cushions, and UV protected. Bring seaside freshness right to your patio with the Ocean Outdoor collection.",
     exploreHref: "#categories",
     shopHref: "#products",
   },
 
+=======
+    description: "Weather resistant, rustproof frame, comfortable cushions, and UV protected. Bring seaside freshness right to your patio with the Ocean Outdoor collection.",
+    exploreHref: "#categories",
+    shopHref: "#products",
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 4,
     image: "/images/hero-6.jpg",
     tagline: "Modern Comfort. Everyday Style.",
     title: "NEXORA DINING CHAIR",
+<<<<<<< HEAD
     description:
       "Crafted from premium virgin plastic for superior strength, weather-shielded and rust-free, with a smart stackable design that saves space and keeps every area clutter-free.",
     exploreHref: "#categories",
     shopHref: "#products",
   },
 
+=======
+    description: "Crafted from premium virgin plastic for superior strength, weather-shielded and rust-free, with a smart stackable design that saves space and keeps every area clutter-free.",
+    exploreHref: "#categories",
+    shopHref: "#products",
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 5,
     image: "/images/hero-5.jpg",
     tagline: "Elegance Arm Chair",
     title: "MOULDED FOR COMFORT",
+<<<<<<< HEAD
     description:
       "Stylish, strong, and comfortable - perfect for any space, inside or out. Built to last with reinforced legs and back support.",
     exploreHref: "#categories",
     shopHref: "#products",
   },
 
+=======
+    description: "Stylish, strong, and comfortable - perfect for any space, inside or out. Built to last with reinforced legs and back support.",
+    exploreHref: "#categories",
+    shopHref: "#products",
+  },
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 6,
     image: "/images/hero-7.jpg",
     tagline: "Learn. Play. Grow.",
     title: "KIDS STUDY TABLE & CHAIR",
+<<<<<<< HEAD
     description:
       "Safe, durable, and made from child-friendly non-toxic material with smooth edges. Easy to assemble and easy to clean - the perfect size for kids aged 1 to 6 years.",
+=======
+    description: "Safe, durable, and made from child-friendly non-toxic material with smooth edges. Easy to assemble and easy to clean - the perfect size for kids aged 1 to 6 years.",
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
     exploreHref: "#categories",
     shopHref: "#products",
   },
 ];
 
+<<<<<<< HEAD
 /* =========================================================
    CATEGORIES
 ========================================================= */
 
+=======
+// Exactly 5 Category Cards (Wider landscape ratio layout)
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
 export const categories: Category[] = [
   {
     id: 1,
@@ -312,28 +414,40 @@ export const categories: Category[] = [
     image: "/images/categories/moulded-range.jpg",
     slug: "moulded-range",
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 2,
     name: "Indoor Furniture",
     image: "/images/categories/indoor-furniture.jpg",
     slug: "indoor-furniture",
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 3,
     name: "Outdoor Furniture",
     image: "/images/categories/outdoor-furniture.jpg",
     slug: "outdoor-furniture",
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 4,
     name: "Office Furniture",
     image: "/images/categories/office-furniture.jpg",
     slug: "office-furniture",
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
   {
     id: 5,
     name: "Kids Furniture",
@@ -342,6 +456,7 @@ export const categories: Category[] = [
   },
 ];
 
+<<<<<<< HEAD
 /* =========================================================
    PRODUCT DETAILS
 ========================================================= */
@@ -1549,3 +1664,47 @@ colors: [
     ],
   },
 ];
+=======
+// Exactly 3 Featured Products using uploaded images
+export const featuredProducts: Product[] = [
+  {
+    id: 1,
+    name: "Modern Lounge Chair",
+    description: "Stylish, comfortable, and durable for everyday use.",
+    category: "Moulded Range",
+    image: "/images/products/modern-lounge-chair.jpg",
+    features: [
+      "Premium Moulded Plastic",
+      "Comfortable Arm Support",
+      "Strong Chrome Legs",
+      "Stylish & Modern Design",
+    ],
+  },
+  {
+    id: 2,
+    name: "Premium Outdoor Chair",
+    description: "Strong and practical seating for outdoor spaces.",
+    category: "Outdoor Furniture",
+    image: "/images/products/premium-outdoor-chair.jpg",
+    features: [
+      "Weather Resistant",
+      "Rustproof Frame",
+      "Comfortable Cushions",
+      "UV Protected",
+    ],
+  },
+  {
+    id: 3,
+    name: "Modern Office Chair",
+    description: "Comfortable and functional seating for modern workspaces.",
+    category: "Office Furniture",
+    image: "/images/products/modern-office-chair.jpg",
+    features: [
+      "Adjustable Height",
+      "Integrated Footrest",
+      "Steel / Chrome Base",
+      "Modern Counter Seat",
+    ],
+  },
+];
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c

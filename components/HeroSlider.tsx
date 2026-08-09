@@ -1,6 +1,10 @@
 "use client";
 
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, useRef } from "react";
+=======
+import React, { useState, useEffect, useCallback } from "react";
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { heroSlides } from "../lib/data";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -31,9 +35,13 @@ const slideVariants: Variants = {
 
 export default function HeroSlider() {
   const [[page, direction], setPage] = useState([0, 0]);
+<<<<<<< HEAD
   const [isHovered, setIsHovered] = useState(false);
   const slideIndex = Math.abs(page % heroSlides.length);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+=======
+  const slideIndex = Math.abs(page % heroSlides.length);
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
 
   const paginate = useCallback((newDirection: number) => {
     setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
@@ -42,6 +50,7 @@ export default function HeroSlider() {
   const handleNext = useCallback(() => paginate(1), [paginate]);
   const handlePrev = useCallback(() => paginate(-1), [paginate]);
 
+<<<<<<< HEAD
   // Handle auto-slide every 3 seconds, pause on hover
   useEffect(() => {
     if (isHovered) {
@@ -64,6 +73,21 @@ export default function HeroSlider() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+=======
+  // Handle auto-slide every 3 seconds continuously
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      handleNext();
+    }, 3000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [handleNext]);
+
+  return (
+    <section className="relative w-full overflow-hidden bg-[#FAF9F6] border-b border-[#E5E5E5] h-[450px] sm:h-[550px] md:h-[570px] lg:h-[650px]">
+>>>>>>> 3772676be083406e54fc030d52b4da2fb3972f4c
       {/* Slider Carousel */}
       <div className="relative w-full h-full">
         <AnimatePresence initial={false} custom={direction}>
