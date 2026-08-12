@@ -122,7 +122,7 @@ export default function ProductWheel({ products, activeIndex, onSelect }: Produc
                 alt=""
                 fill
                 sizes="160px"
-                className="object-cover"
+                className="object-contain"
               />
             </span>
           </motion.button>

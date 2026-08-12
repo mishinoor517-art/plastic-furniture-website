@@ -218,7 +218,7 @@ export default function InteractiveProductWheel() {
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         sizes="(max-width: 1024px) 60vw, 30vw"
                         priority={isActive}
                       />

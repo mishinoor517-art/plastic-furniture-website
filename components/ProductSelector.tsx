@@ -32,7 +32,7 @@ export default function ProductSelector({ product, isActive, onSelect }: Product
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover"
+          className="object-contain"
           sizes="64px"
         />
       </span>

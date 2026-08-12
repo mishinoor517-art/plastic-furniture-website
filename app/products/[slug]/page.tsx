@@ -579,7 +579,7 @@ export default function ProductDetailsPage() {
                 key={`${product.slug}-${selectedColor}-${selectedImage}`}
                 src={selectedImage}
                 alt={`${product.name} - ${selectedColor}`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
                 loading="eager"
                 onError={(event) => {
                   console.error(
@@ -632,7 +632,7 @@ export default function ProductDetailsPage() {
                       <img
                         src={thumbImage}
                         alt={`${product.name} - ${option.name}`}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           // Fallback: show color swatch if image fails
                           (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -710,23 +710,7 @@ export default function ProductDetailsPage() {
 
             {/* PRICE */}
 
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-
-              <p className="text-2xl font-bold text-[#222222]">
-                {formatCurrency(
-                  product.price
-                )}
-              </p>
-
-              <span className="rounded-full border border-[#606C38]/15 bg-[#606C38]/5 px-3 py-1 text-[11px] font-semibold text-[#606C38]">
-                {product.stock}
-              </span>
-
-            </div>
-
-            <p className="mt-4 text-sm leading-relaxed text-neutral-500">
-              {product.description}
-            </p>
+       
 
             {/* PRODUCT CODE */}
 

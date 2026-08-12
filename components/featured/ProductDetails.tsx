@@ -25,7 +25,7 @@ export default function ProductDetails({ product }: { product: CmsProduct }) {
               alt={product.name}
               fill
               sizes="176px"
-              className="object-cover"
+              className="object-contain"
               priority
             />
           </div>

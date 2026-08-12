@@ -1,11 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { videoShowcaseItems } from "../lib/data";
 import VideoCard from "./VideoCard";
 
 export default function VideoShowcase() {
+  // Only one video across the whole section is ever "active" (playing) at a
+  // time -- clicking another card's play button pauses this one and starts
+  // that one instead.
+  const [activeId, setActiveId] = useState<number | null>(null);
+
   return (
     <section id="videos" className="scroll-mt-20 border-b border-[#E5E5E5] bg-white py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,7 +44,11 @@ export default function VideoShowcase() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <VideoCard video={video} />
+              <VideoCard
+                video={video}
+                isActive={activeId === video.id}
+                onActivate={() => setActiveId(video.id)}
+              />
             </motion.div>
           ))}
         </div>

@@ -25,7 +25,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             alt={category.name}
             fill
             sizes="(max-width: 768px) 320px, 360px"
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
             onError={() => setImgError(true)}
           />
         ) : (

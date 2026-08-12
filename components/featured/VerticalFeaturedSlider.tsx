@@ -75,7 +75,7 @@ export default function VerticalFeaturedSlider({ slides }: { slides: CmsSlide[] 
                 alt=""
                 fill
                 sizes="380px"
-                className="object-cover"
+                className="object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#222222] via-[#222222]/10 to-transparent" />
             </div>

@@ -43,7 +43,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <Link href="/" className="group flex items-center gap-2.5">
                 <div className="relative h-12 w-12 overflow-hidden rounded-lg transition-transform duration-300 group-hover:rotate-6">
-                  <Image src="/images/logo.jpg" alt="Sigma Moulded Furniture" fill className="object-cover" />
+                  <Image src="/images/logo.jpg" alt="Sigma Moulded Furniture" fill className="object-contain" />
                 </div>
                 <span className="text-xl font-bold tracking-wider text-[#222222]">
                   SIGMA<span className="font-light text-[#C5A880]">FURNITURE</span>
@@ -129,7 +129,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-6">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                   <div className="relative h-9 w-9 overflow-hidden rounded">
-                    <Image src="/images/logo.jpg" alt="Sigma Moulded Furniture" fill className="object-cover" />
+                    <Image src="/images/logo.jpg" alt="Sigma Moulded Furniture" fill className="object-contain" />
                   </div>
                   <span className="text-lg font-bold tracking-wider text-[#222222]">
                     SIGMA<span className="font-light text-[#C5A880]">FURNITURE</span>

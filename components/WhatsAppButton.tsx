@@ -11,7 +11,7 @@ import React, { useState } from "react";
    • Tooltip on hover
 ───────────────────────────────────────────────────────────────────────────── */
 
-const WHATSAPP_NUMBER = "923001234567"; // Pakistani format: 92 + number without leading 0
+const WHATSAPP_NUMBER = "923216440001"; // Pakistani format: 92 + number without leading 0
 const WHATSAPP_MESSAGE =
   "Hello! I'm interested in your furniture. Can you please help me?";
 

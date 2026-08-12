@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Product } from "../lib/data";
 import { ShoppingBag, Eye, Star } from "lucide-react";
-import { addItemToCart, formatCurrency } from "../lib/cart";
+import { addItemToCart } from "../lib/cart";
 
 interface ProductCardProps {
   product: Product;
@@ -19,7 +19,9 @@ export default function ProductCard({ product }: ProductCardProps) {
     router.push(`/products/${product.slug}`);
   };
 
-  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddToCart = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.stopPropagation();
     addItemToCart(product, 1, product.colors[0].name);
     setFeedback("Product added to cart successfully!");
@@ -31,15 +33,16 @@ export default function ProductCard({ product }: ProductCardProps) {
       onClick={handleViewProduct}
       className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-xl border border-[#E5E5E5] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg"
     >
-  <div className="relative h-64 w-full overflow-hidden">
-  <Image
-    src={product.image}
-    alt={product.name}
-    fill
-    className="object-contain"
-    sizes="(max-width: 768px) 100vw, 33vw"
-  />
-</div>
+      <div className="relative h-64 w-full overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+      </div>
+
       <div className="flex flex-1 flex-col p-6">
         <span className="mb-1.5 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#C5A880]">
           {product.category}
@@ -55,16 +58,19 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="mb-4 flex items-center gap-1 text-amber-500">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} className="h-4 w-4 fill-current" />
+            <Star
+              key={index}
+              className="h-4 w-4 fill-current"
+            />
           ))}
-          <span className="ml-1 text-sm font-semibold text-[#222222]">{product.rating.toFixed(1)}</span>
+
+          <span className="ml-1 text-sm font-semibold text-[#222222]">
+            {product.rating.toFixed(1)}
+          </span>
         </div>
 
-        <div className="mb-5 flex items-end justify-between gap-3">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">Price</p>
-            <p className="text-xl font-bold text-[#222222]">{formatCurrency(product.price)}</p>
-          </div>
+        {/* Stock */}
+        <div className="mb-5 flex justify-end">
           <span className="rounded-full border border-[#606C38]/15 bg-[#606C38]/5 px-3 py-1 text-[11px] font-semibold text-[#606C38]">
             {product.stock}
           </span>
@@ -81,6 +87,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Eye className="h-3.5 w-3.5" />
             View Product
           </button>
+
           <button
             onClick={handleAddToCart}
             className="flex h-10 w-10 items-center justify-center rounded-md border border-[#E5E5E5] bg-white text-neutral-600 transition-all duration-200 hover:border-[#C5A880] hover:bg-[#C5A880] hover:text-white"
@@ -90,7 +97,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           </button>
         </div>
 
-        {feedback ? <p className="mt-3 text-sm font-medium text-[#606C38]">{feedback}</p> : null}
+        {feedback ? (
+          <p className="mt-3 text-sm font-medium text-[#606C38]">
+            {feedback}
+          </p>
+        ) : null}
       </div>
     </div>
   );

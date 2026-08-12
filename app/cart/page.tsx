@@ -62,7 +62,7 @@ export default function CartPage() {
               {cartItems.map((item) => (
                 <div key={`${item.slug}-${item.color}`} className="flex flex-col gap-4 rounded-2xl border border-[#E5E5E5] bg-white p-4 shadow-sm sm:flex-row">
                   <div className="relative h-32 w-full overflow-hidden rounded-xl bg-[#F8F4ED] sm:w-40">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" />
+                    <Image src={item.image} alt={item.name} fill className="object-contain" />
                   </div>
 
                   <div className="flex-1">

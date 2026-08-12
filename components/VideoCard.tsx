@@ -1,17 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import { VideoShowcaseItem } from "../lib/data";
 
 interface VideoCardProps {
   video: VideoShowcaseItem;
+  isActive: boolean;
+  onActivate: () => void;
 }
 
-export default function VideoCard({ video }: VideoCardProps) {
+export default function VideoCard({ video, isActive, onActivate }: VideoCardProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showNotice, setShowNotice] = useState(false);
+
+  // Whenever another card becomes active, pause this one so only a single
+  // video ever plays at the same time.
+  useEffect(() => {
+    if (!isActive) {
+      videoRef.current?.pause();
+    }
+  }, [isActive]);
 
   const handlePlayClick = () => {
     if (!video.src) {
@@ -21,21 +32,29 @@ export default function VideoCard({ video }: VideoCardProps) {
       window.setTimeout(() => setShowNotice(false), 1800);
       return;
     }
-    setIsPlaying(true);
+
+    onActivate();
+    // Wait a tick so the <video> element (only rendered once active) exists.
+    requestAnimationFrame(() => {
+      videoRef.current?.play();
+    });
   };
 
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#E5E5E5] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="relative aspect-video w-full overflow-hidden bg-[#F8F4ED]">
-        {isPlaying && video.src ? (
+        {isActive && video.src ? (
           <video
+            ref={videoRef}
             src={video.src}
             poster={video.poster}
             controls
             autoPlay
             playsInline
             preload="none"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
           >
             Your browser does not support embedded videos.
           </video>
@@ -46,7 +65,7 @@ export default function VideoCard({ video }: VideoCardProps) {
               alt={video.title}
               fill
               loading="lazy"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-contain transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
             <div className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/35" />
@@ -67,6 +86,12 @@ export default function VideoCard({ video }: VideoCardProps) {
               </div>
             )}
           </>
+        )}
+
+        {isActive && isPlaying && (
+          <span className="pointer-events-none absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white">
+            <Pause className="h-3.5 w-3.5 fill-current" />
+          </span>
         )}
       </div>
 

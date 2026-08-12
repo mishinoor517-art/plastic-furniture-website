@@ -34,16 +34,13 @@ export default function Footer() {
             <div className="mt-5 space-y-3 text-sm text-neutral-300">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-[#C5A880]" />
-                <span>Karachi, Pakistan</span>
+                <span>Jinna road near tariq mill wala gala gujranwala</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#C5A880]" />
-                <span>+92 300 1234567</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#C5A880]" />
-                <span>support@sigmafurniture.pk</span>
-              </div>
+             <div className="flex items-center gap-2">
+  <Phone className="h-4 w-4 text-[#C5A880]" />
+  <span>+92 315 9944444</span>
+</div>
+              
             </div>
           </div>
 

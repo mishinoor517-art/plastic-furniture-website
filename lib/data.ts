@@ -49,7 +49,7 @@ export interface Product {
   colorImages?: Record<string, string>;
 
   features: string[];
-  price: number;
+ 
   rating: number;
   code: string;
   stock: string;
@@ -258,16 +258,7 @@ export const heroSlides: HeroSlide[] = [
     shopHref: "#products",
   },
 
-  {
-    id: 3,
-    image: "/images/hero-3.jpg",
-    tagline: "Ocean Theme",
-    title: "OUTDOOR CHAIR SET",
-    description:
-      "Weather resistant, rustproof frame, comfortable cushions, and UV protected. Bring seaside freshness right to your patio with the Ocean Outdoor collection.",
-    exploreHref: "#categories",
-    shopHref: "#products",
-  },
+ 
 
   {
     id: 4,
@@ -718,7 +709,7 @@ export const featuredProducts: Product[] = [
       
     },
 
-    price: 14500,
+  
     rating: 4.8,
     code: "SIG-CH-001",
     stock: "In stock",
@@ -777,49 +768,47 @@ colors: [
     image:
       "/images/product-2/product-2-seagreen.png",
        colorImages: {
-      Aqua:
-        "/images/product-2/product-2-aqua.png",
-      Blue:
+      seagreen:
+        "/images/product-2/product-2-seagreen.png",
+      blue:
         "/images/product-2/product-2-blue.png",
-      Brown:
-        "/images/product-2/product-2-brown.png",
       gray:
         "/images/product-2/product-2-gray.png",
       olive:
         "/images/product-2/product-2-olive.png",
-         purple:
+      purple:
         "/images/product-2/product-2-purple.png",
-      red:
+        red:
         "/images/product-2/product-2-red.png",
-      seagreen:
-        "/images/product-2/product-2-seagreen.png",
-          skin:
+      skin:
         "/images/product-2/product-2-skin.png",
-      white:
+         skyblue:
+        "/images/product-2/product-2-skyblue.png",
+         white:
         "/images/product-2/product-2-white.png",
+         brown:
+        "/images/product-2/product-2-brown.png",
+
+    
    
     },
 
-    price: 13200,
+   
     rating: 4.7,
     code: "SIG-CH-002",
     stock: "In stock",
 
-   colors: [
+colors: [
   {
-    name: "aqua",
-    value: "#00FFFF",
+    name: "seagreen",
+    value: "#2E8B57",
   },
   {
     name: "blue",
     value: "#0000FF",
   },
   {
-    name: "brown",
-    value: "#A52A2A",
-  },
-  {
-    name: "grey",
+    name: "gray",
     value: "#808080",
   },
   {
@@ -835,16 +824,20 @@ colors: [
     value: "#FF0000",
   },
   {
-    name: "seagreen",
-    value: "#2E8B57",
-  },
-  {
     name: "skin",
     value: "#F5CBA7",
   },
   {
+    name: "skyblue",
+    value: "#87CEEB",
+  },
+  {
     name: "white",
     value: "#FFFFFF",
+  },
+  {
+    name: "brown",
+    value: "#A52A2A",
   },
 ],
 
@@ -893,7 +886,7 @@ features: [
     },
 
 
-    price: 15800,
+  
     rating: 4.9,
     code: "SIG-CH-003",
     stock: "In stock",
@@ -964,6 +957,8 @@ colors: [
         "/images/product-4/product-4-red.png",
       yellow:
         "/images/product-4/product-4-yellow.png",
+          skyblue:
+        "/images/product-4/product-4-skyblue.png",
       
       
    
@@ -971,7 +966,7 @@ colors: [
 
 
 
-    price: 16900,
+    
     rating: 4.8,
     code: "SIG-CH-004",
     stock: "In stock",
@@ -993,6 +988,10 @@ colors: [
     name: "yellow",
     value: "#FFFF00",
   },
+{
+  name: "skyblue",
+  value: "#87CEEB",
+}
 ],
 
     features: [
@@ -1040,7 +1039,7 @@ colors: [
     },
 
 
-    price: 15100,
+  
     rating: 4.7,
     code: "SIG-CH-005",
     stock: "In stock",
@@ -1120,7 +1119,7 @@ colors: [
 
 
 
-    price: 21400,
+    
     rating: 4.9,
     code: "SIG-CH-006",
     stock: "In stock",
@@ -1177,32 +1176,60 @@ colors: [
        colorImages: {
       brown:
         "/images/product-7/product-7-brown.png",
-      skyblue:
-        "/images/product-7/product-7-skyblue.png",
-      white:
-        "/images/product-7/product-7-white.png",
       black:
         "/images/product-7/product-7-black.png",
+      gray:
+        "/images/product-7/product-7-gray.png",
+      purple:
+        "/images/product-7/product-7-purple.png",
+        red:
+        "/images/product-7/product-7-red.png",
+      skin :
+        "/images/product-7/product-7-skin.png",
+        skyblue:
+        "/images/product-7/product-7-skyblue.png",
+      white :
+        "/images/product-7/product-7-white.png",
+
          },
 
 
-    price: 18600,
+    
     rating: 4.8,
     code: "SIG-CH-007",
     stock: "In stock",
-
-    colors: [
+colors: [
   {
     name: "brown",
-    value: "#FF0000",
-  },
-  {
-    name: "skyblue",
-    value: "#00FFFF",
+    value: "#A52A2A",
   },
   {
     name: "black",
     value: "#000000",
+  },
+  {
+    name: "gray",
+    value: "#808080",
+  },
+  {
+    name: "purple",
+    value: "#800080",
+  },
+  {
+    name: "red",
+    value: "#FF0000",
+  },
+  {
+    name: "skin",
+    value: "#FFDAB9",
+  },
+  {
+    name: "skyblue",
+    value: "#87CEEB",
+  },
+  {
+    name: "white",
+    value: "#FFFFFF",
   }
 ],
 
@@ -1244,7 +1271,7 @@ colors: [
 
 
 
-    price: 12400,
+  
     rating: 4.6,
     code: "SIG-CH-008",
     stock: "In stock",
@@ -1306,7 +1333,7 @@ colors: [
         "/images/product-9/product-9-aqua.png",
       
     },
-    price: 17300,
+   
     rating: 4.8,
     code: "SIG-CH-009",
     stock: "In stock",
@@ -1364,34 +1391,33 @@ colors: [
       green:
         "/images/product-10/product-10-green.jpeg",
       red:
-        "/images/product-10/product-10-red.jpeg",
+        "/images/product-10/product-10-red.png",
        
       
     },
 
-    price: 13900,
+   
     rating: 4.6,
     code: "SIG-CH-010",
     stock: "In stock",
-
-    colors: [
-      {
-        name: "yellow",
-        value: "#8F8F8F",
-      },
-      {
-        name: "blue",
-        value: "#111111",
-      },
-      {
-        name: "green",
-        value: "#1E3A8A",
-      },
-      {
-        name: "red",
-        value: "#7F1D1D",
-      },
-    ],
+colors: [
+  {
+    name: "yellow",
+    value: "#FFFF00",
+  },
+  {
+    name: "blue",
+    value: "#0000FF",
+  },
+  {
+    name: "green",
+    value: "#008000",
+  },
+  {
+    name: "red",
+    value: "#FF0000",
+  },
+],
 
     features: [
       "Guest-ready comfort",
@@ -1426,7 +1452,7 @@ colors: [
     },
 
 
-    price: 12800,
+   
     rating: 4.7,
     code: "SIG-CH-011",
     stock: "In stock",
@@ -1465,7 +1491,7 @@ colors: [
     image:
       "/images/products/chair-placeholder.svg",
 
-    price: 16200,
+   
     rating: 4.8,
     code: "SIG-CH-012",
     stock: "In stock",
@@ -1512,7 +1538,7 @@ colors: [
     image:
       "/images/products/chair-placeholder.svg",
 
-    price: 14700,
+   
     rating: 4.7,
     code: "SIG-CH-013",
     stock: "In stock",
@@ -1559,7 +1585,7 @@ colors: [
     image:
       "/images/products/chair-placeholder.svg",
 
-    price: 18300,
+   
     rating: 4.9,
     code: "SIG-CH-014",
     stock: "In stock",
@@ -1606,7 +1632,7 @@ colors: [
     image:
       "/images/products/chair-placeholder.svg",
 
-    price: 17600,
+   
     rating: 4.9,
     code: "SIG-CH-015",
     stock: "In stock",
@@ -1657,7 +1683,7 @@ export interface WheelProduct {
   description: string;
   image: string;
   specs: WheelProductSpec[];
-  price: number;
+  
   ctaLabel: string;
   ctaHref: string;
 }
@@ -1676,7 +1702,7 @@ export const wheelProducts: WheelProduct[] = [
       { label: "Finish", value: "Matte, rust-safe legs" },
       { label: "Best for", value: "Home & office use" },
     ],
-    price: 14500,
+   
     ctaLabel: "View Product",
     ctaHref: "/products/sigma-classic-moulded-chair",
   },
@@ -1693,7 +1719,7 @@ export const wheelProducts: WheelProduct[] = [
       { label: "Finish", value: "Smooth, easy to clean" },
       { label: "Best for", value: "Indoor & outdoor use" },
     ],
-    price: 12800,
+    
     ctaLabel: "View Product",
     ctaHref: "/products/sigma-modern-plastic-chair",
   },
@@ -1710,7 +1736,7 @@ export const wheelProducts: WheelProduct[] = [
       { label: "Finish", value: "Weather-resistant coating" },
       { label: "Best for", value: "Lounges & outdoor patios" },
     ],
-    price: 16200,
+   
     ctaLabel: "View Product",
     ctaHref: "/products/sigma-heritage-armchair",
   },
@@ -1727,7 +1753,7 @@ export const wheelProducts: WheelProduct[] = [
       { label: "Finish", value: "Soft-touch surface" },
       { label: "Best for", value: "Showrooms & lounge corners" },
     ],
-    price: 15400,
+    
     ctaLabel: "View Product",
     ctaHref: "/products/sigma-studio-lounge-chair",
   },
@@ -1751,25 +1777,19 @@ export interface VideoShowcaseItem {
 export const videoShowcaseItems: VideoShowcaseItem[] = [
   {
     id: 1,
-    title: "Crafted for Everyday Comfort",
-    description: "A closer look at how our moulded chairs are designed and tested.",
-    poster: "/images/product-1/product-1-blue.png",
-    src: "",
+    title: "Inside the SIGMA Showroom",
+    description: "A walkthrough of our latest moulded chair collection, straight from the showroom.",
+    poster: "/images/video-showcase/showroom-walkthrough.jpg",
+    src: "/videos/showroom-walkthrough.mp4",
   },
   {
     id: 2,
-    title: "Inside the SIGMA Showroom",
-    description: "Take a walkthrough of our latest indoor and outdoor collections.",
-    poster: "/images/product-3/product-3-red.jpeg",
-    src: "",
+    title: "latest collection",
+    description: "From cozy playrooms to family spaces, see how our pieces fit right in.",
+    poster: "/images/video-showcase/latest-collection.jpg",
+    src: "/videos/latest collection.mp4",
   },
-  {
-    id: 3,
-    title: "Built to Last, Season After Season",
-    description: "See how our furniture holds up to daily use, indoors and out.",
-    poster: "/images/product-5/product-5-rust.png",
-    src: "",
-  },
+
 ];
 
 /* =========================================================
