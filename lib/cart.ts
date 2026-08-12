@@ -4,7 +4,6 @@ export interface CartItem {
   id: number;
   slug: string;
   name: string;
-  price: number;
   image: string;
   color: string;
   colorValue: string;
@@ -21,6 +20,7 @@ export function getStoredCart(): CartItem[] {
 
   try {
     const storedCart = window.localStorage.getItem(CART_STORAGE_KEY);
+
     if (!storedCart) {
       return [];
     }
@@ -36,7 +36,10 @@ export function saveCart(cart: CartItem[]) {
     return;
   }
 
-  window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  window.localStorage.setItem(
+    CART_STORAGE_KEY,
+    JSON.stringify(cart)
+  );
 }
 
 export function emitCartUpdated() {
@@ -47,12 +50,25 @@ export function emitCartUpdated() {
   window.dispatchEvent(new Event(CART_UPDATED_EVENT));
 }
 
-export function addItemToCart(product: Product, quantity: number, color: string) {
+export function addItemToCart(
+  product: Product,
+  quantity: number,
+  color: string
+) {
   const currentCart = getStoredCart();
-  const selectedColor = product.colors.find((option) => option.name === color) ?? product.colors[0];
+
+  const selectedColor =
+    product.colors.find((option) => option.name === color) ??
+    product.colors[0];
+
+  if (!selectedColor) {
+    return currentCart;
+  }
 
   const existingItemIndex = currentCart.findIndex(
-    (item) => item.slug === product.slug && item.color === selectedColor.name
+    (item) =>
+      item.slug === product.slug &&
+      item.color === selectedColor.name
   );
 
   if (existingItemIndex >= 0) {
@@ -62,7 +78,6 @@ export function addItemToCart(product: Product, quantity: number, color: string)
       id: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
       image: product.image,
       color: selectedColor.name,
       colorValue: selectedColor.value,
@@ -76,10 +91,19 @@ export function addItemToCart(product: Product, quantity: number, color: string)
   return currentCart;
 }
 
-export function updateCartItemQuantity(slug: string, color: string, quantity: number) {
+export function updateCartItemQuantity(
+  slug: string,
+  color: string,
+  quantity: number
+) {
   const currentCart = getStoredCart();
+
   const updatedCart = currentCart
-    .map((item) => (item.slug === slug && item.color === color ? { ...item, quantity } : item))
+    .map((item) =>
+      item.slug === slug && item.color === color
+        ? { ...item, quantity }
+        : item
+    )
     .filter((item) => item.quantity > 0);
 
   saveCart(updatedCart);
@@ -88,20 +112,19 @@ export function updateCartItemQuantity(slug: string, color: string, quantity: nu
   return updatedCart;
 }
 
-export function removeCartItem(slug: string, color: string) {
+export function removeCartItem(
+  slug: string,
+  color: string
+) {
   const currentCart = getStoredCart();
-  const updatedCart = currentCart.filter((item) => !(item.slug === slug && item.color === color));
+
+  const updatedCart = currentCart.filter(
+    (item) =>
+      !(item.slug === slug && item.color === color)
+  );
 
   saveCart(updatedCart);
   emitCartUpdated();
 
   return updatedCart;
-}
-
-export function formatCurrency(amount: number) {
-  return new Intl.NumberFormat("en-PK", {
-    style: "currency",
-    currency: "PKR",
-    maximumFractionDigits: 0,
-  }).format(amount);
 }

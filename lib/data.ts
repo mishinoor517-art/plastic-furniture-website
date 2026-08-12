@@ -1775,22 +1775,23 @@ export interface VideoShowcaseItem {
 }
 
 export const videoShowcaseItems: VideoShowcaseItem[] = [
-  {
-    id: 1,
-    title: "Inside the SIGMA Showroom",
-    description: "A walkthrough of our latest moulded chair collection, straight from the showroom.",
-    poster: "/images/video-showcase/showroom-walkthrough.jpg",
-    src: "/videos/showroom-walkthrough.mp4",
-  },
-  {
-    id: 2,
-    title: "latest collection",
-    description: "From cozy playrooms to family spaces, see how our pieces fit right in.",
-    poster: "/images/video-showcase/latest-collection.jpg",
-    src: "/videos/latest collection.mp4",
-  },
+{
+  id: 1,
+  title: "Latest Collection",
+  description: "Explore our latest furniture designs.",
+  poster: "/images/video-showcase/latest-collection.jpg",
+  src: "/images/videos/latest-collection.mp4",
+},
 
+{
+  id: 2,
+  title: "Showroom Walkthrough",
+  description: "Take a look around our furniture showroom and discover our latest designs.",
+  poster: "/images/video-showcase/showroom-walkthrough.jpg",
+  src: "/images/videos/showroom-walkthrough.mp4",
+},
 ];
+
 
 /* =========================================================
    COMPANY LOGO MARQUEE

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -6,7 +6,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShoppingBag } from "lucide-react";
 import { wheelProducts } from "../lib/data";
-import { formatCurrency } from "../lib/cart";
 import ProductSelector from "./ProductSelector";
 
 /*
@@ -50,7 +49,7 @@ export default function InteractiveProductWheel() {
     });
   }, []);
 
-  // Always auto-rotate — starts immediately on mount, no conditions needed
+  // Always auto-rotate â€” starts immediately on mount, no conditions needed
   useEffect(() => {
     timerRef.current = setInterval(goToNext, AUTOPLAY_INTERVAL_MS);
     return () => {
@@ -131,11 +130,7 @@ export default function InteractiveProductWheel() {
                   ))}
                 </dl>
 
-                <div className="mb-8 flex items-center gap-4">
-                  <p className="text-2xl font-bold text-[#222222]">
-                    {formatCurrency(activeProduct.price)}
-                  </p>
-                </div>
+                
 
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
