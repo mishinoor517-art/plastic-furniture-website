@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 import { featuredProducts, productDetails } from "@/lib/data";
-import { addItemToCart, formatCurrency } from "@/lib/cart";
+import { addItemToCart } from "@/lib/cart";
 import ChairIllustration from "@/components/ChairIllustration";
 
 interface ReviewEntry {
@@ -1329,11 +1329,7 @@ export default function ProductDetailsPage() {
                     {item.name}
                   </h3>
 
-                  <p className="mt-1 text-sm font-semibold text-[#222222]">
-                    {formatCurrency(
-                      item.price
-                    )}
-                  </p>
+                  
 
                   <div className="mt-2 flex items-center gap-1 text-amber-500">
 
