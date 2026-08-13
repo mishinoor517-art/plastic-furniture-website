@@ -85,7 +85,7 @@ export default function HeroSlider() {
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-center select-none"
+                className="object-contain object-center select-none"
               />
             </div>
           </motion.div>

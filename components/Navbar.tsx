@@ -69,7 +69,7 @@ export default function Navbar() {
                 <span className="text-xl font-bold tracking-wider text-[#222222]">
                   SIGMA
                   <span className="font-light text-[#C5A880]">
-                    FURNITURE
+                    MOULDED FURNITURE
                   </span>
                 </span>
               </Link>
@@ -198,12 +198,12 @@ export default function Navbar() {
                     />
                   </div>
 
-                  <span className="text-lg font-bold tracking-wider text-[#222222]">
-                    SIGMA
-                    <span className="font-light text-[#C5A880]">
-                      FURNITURE
-                    </span>
-                  </span>
+                  <span className="text-xl font-bold tracking-wider text-[#222222]">
+  SIGMA{" "}
+  <span className="font-light text-[#C5A880]">
+    Moulded Furniture
+  </span>
+</span>
                 </Link>
 
                 {/* CLOSE BUTTON */}
