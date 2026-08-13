@@ -98,22 +98,22 @@ export default function HeroSlider() {
         border-[#E5E5E5]
 
         /* Mobile */
-        min-h-[220px]
+        h-[380px]
 
         /* Small screens */
-        sm:min-h-[350px]
+        sm:h-[480px]
 
         /* Tablet */
-        md:min-h-[500px]
+        md:h-[550px]
 
         /* Desktop */
-        lg:min-h-[650px]
+        lg:h-[650px]
       "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Slider */}
-      <div className="relative w-full">
+      <div className="relative w-full h-full">
         <AnimatePresence
           initial={false}
           custom={direction}
@@ -126,15 +126,17 @@ export default function HeroSlider() {
             animate="center"
             exit="exit"
             className="
-              relative
+              absolute
+              inset-0
               w-full
+              h-full
               flex
               items-center
               justify-center
             "
           >
             {/* IMAGE CONTAINER */}
-            <div className="relative w-full flex justify-center">
+            <div className="relative w-full h-full flex items-center justify-center">
               <Image
                 src={heroSlides[slideIndex].image}
                 alt={heroSlides[slideIndex].title}
@@ -145,7 +147,7 @@ export default function HeroSlider() {
                 className="
                   block
                   w-full
-                  h-auto
+                  h-full
                   object-contain
                   object-center
                   select-none
