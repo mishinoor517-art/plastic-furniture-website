@@ -98,13 +98,13 @@ export default function HeroSlider() {
         border-[#E5E5E5]
 
         /* Mobile */
-        h-[380px]
+        h-[700px]
 
         /* Small screens */
-        sm:h-[480px]
+        sm:h-[750px]
 
         /* Tablet */
-        md:h-[550px]
+        md:h-[600px]
 
         /* Desktop */
         lg:h-[650px]
@@ -171,16 +171,14 @@ export default function HeroSlider() {
                 (object-contain never crops, only letterboxes).
                 lg+ keeps the original edge-to-edge layout untouched.
               */}
-              <div
-                className="
-                  relative w-full h-full
-                  flex items-center justify-center
-                  px-8 py-6
-                  sm:px-12 sm:py-8
-                  md:px-16 md:py-10
-                  lg:px-0 lg:py-0
-                "
-              >
+             <div 
+ className="
+   relative w-full h-full 
+   flex items-center justify-center
+   px-0
+   py-0
+ "
+>
                 <div className="relative w-full h-full drop-shadow-lg lg:drop-shadow-none">
                   <Image
                     src={heroSlides[slideIndex].image}
