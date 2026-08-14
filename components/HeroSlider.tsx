@@ -136,23 +136,66 @@ export default function HeroSlider() {
             "
           >
             {/* IMAGE CONTAINER */}
-            <div className="relative w-full h-full flex items-center justify-center">
-              <Image
-                src={heroSlides[slideIndex].image}
-                alt={heroSlides[slideIndex].title}
-                width={1920}
-                height={650}
-                priority
-                sizes="100vw"
+            <div className="relative w-full h-full">
+              {/*
+                Soft blurred backdrop (mobile / tablet / small-laptop only).
+                Our hero photos are landscape-ish (~1.5:1) while the mobile
+                hero box is short (~350-400px), so a full-bleed object-contain
+                image always ends up touching the left/right edges with
+                empty space above and below it. Instead of leaving that gap
+                plain, we fill it with a blurred, tinted copy of the same
+                image so the section reads as one cohesive "banner" rather
+                than a photo floating on bare background.
+                Hidden on lg+ so the existing desktop look is untouched.
+              */}
+              <div
+                className="absolute inset-0 overflow-hidden lg:hidden"
+                aria-hidden="true"
+              >
+                <Image
+                  src={heroSlides[slideIndex].image}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="object-cover scale-125 blur-2xl opacity-40 select-none"
+                />
+                <div className="absolute inset-0 bg-[#FAF9F6]/70" />
+              </div>
+
+              {/*
+                Foreground: the COMPLETE, un-cropped hero image.
+                Inset padding below lg keeps the photo from touching the
+                screen edges edge-to-edge, so on phones it reads as a
+                framed, balanced banner image instead of one long thin
+                strip - without ever cropping any part of the picture
+                (object-contain never crops, only letterboxes).
+                lg+ keeps the original edge-to-edge layout untouched.
+              */}
+              <div
                 className="
-                  block
-                  w-full
-                  h-full
-                  object-contain
-                  object-center
-                  select-none
+                  relative w-full h-full
+                  flex items-center justify-center
+                  px-8 py-6
+                  sm:px-12 sm:py-8
+                  md:px-16 md:py-10
+                  lg:px-0 lg:py-0
                 "
-              />
+              >
+                <div className="relative w-full h-full drop-shadow-lg lg:drop-shadow-none">
+                  <Image
+                    src={heroSlides[slideIndex].image}
+                    alt={heroSlides[slideIndex].title}
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="
+                      object-contain
+                      object-center
+                      select-none
+                    "
+                  />
+                </div>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
