@@ -238,7 +238,7 @@ export const navCategories: NavCategory[] = [
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    image: "/images/hero-1.jpg",
+    image: "/images/hero-1.png",
     tagline: "Relax in Style",
     title: "MODERN LOUNGE CHAIR",
     description:
