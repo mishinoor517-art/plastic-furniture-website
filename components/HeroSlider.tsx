@@ -98,10 +98,10 @@ export default function HeroSlider() {
         border-[#E5E5E5]
 
         /* Mobile */
-        h-[700px]
+        h-[600px]
 
         /* Small screens */
-        sm:h-[750px]
+        sm:h-[650px]
 
         /* Tablet */
         md:h-[600px]
@@ -186,11 +186,11 @@ export default function HeroSlider() {
                     fill
                     priority
                     sizes="100vw"
-                    className="
-                      object-contain
-                      object-center
-                      select-none
-                    "
+                  className="
+  object-contain
+  object-center
+  select-none
+"
                   />
                 </div>
               </div>
