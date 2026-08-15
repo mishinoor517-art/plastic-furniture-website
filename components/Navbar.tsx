@@ -44,6 +44,9 @@ export default function Navbar() {
     <>
       {/* =========================
           DESKTOP / MAIN NAVBAR
+          Stays sticky at z-50, which is well above the hero slider
+          (z-0) and its arrows/dots (z-20), so the hamburger icon, logo,
+          and cart are never covered by the hero banner on any screen size.
       ========================== */}
       <header className="sticky top-0 z-50 w-full border-b border-[#E5E5E5] bg-white transition-all duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

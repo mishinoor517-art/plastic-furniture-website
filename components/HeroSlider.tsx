@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useSyncExternalStore,
+} from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { heroSlides } from "../lib/data";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -43,19 +49,51 @@ const slideVariants: Variants = {
   }),
 };
 
+// Matches Tailwind's default `md` breakpoint (768px). Below this we treat
+// the viewport as "mobile" and load the dedicated vertical hero image.
+const MOBILE_BREAKPOINT_QUERY = "(max-width: 767px)";
+
+// useSyncExternalStore is the React-recommended way to read a browser-only
+// value (like a media query) that can change over time. Unlike doing this
+// in a useEffect + setState, it doesn't cause an extra render pass and it
+// plays correctly with SSR: the server snapshot is used for the first
+// paint, then React reconciles to the real client value right after
+// hydration - so there's no "flash of wrong image" and no hydration
+// mismatch warning.
+function subscribe(callback: () => void) {
+  const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT_QUERY);
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+  return window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches;
+}
+
+// The server doesn't know the viewport. Default to "desktop" (false) so
+// the very first HTML sent to the browser (and to crawlers/no-JS clients)
+// contains the wide banner - React then swaps to the mobile image on the
+// client if the media query says otherwise.
+function getServerSnapshot() {
+  return false;
+}
+
 export default function HeroSlider() {
   const [[page, direction], setPage] = useState([0, 0]);
   const [isHovered, setIsHovered] = useState(false);
+
+  const isMobile = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
   const slideIndex = Math.abs(page % heroSlides.length);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const paginate = useCallback((newDirection: number) => {
-    setPage(([prevPage]) => [
-      prevPage + newDirection,
-      newDirection,
-    ]);
+    setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
   }, []);
 
   const handleNext = useCallback(() => {
@@ -87,37 +125,50 @@ export default function HeroSlider() {
     };
   }, [isHovered, handleNext]);
 
+  const currentSlide = heroSlides[slideIndex];
+
   return (
     <section
       className="
         relative
+        z-0
         w-full
+        max-w-[100vw]
         overflow-hidden
         bg-[#FAF9F6]
         border-b
         border-[#E5E5E5]
-
-        /* Mobile */
-        h-[600px]
-
-        /* Small screens */
-        sm:h-[650px]
-
-        /* Tablet */
-        md:h-[600px]
-
-        /* Desktop */
-        lg:h-[650px]
       "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Slider */}
-      <div className="relative w-full h-full">
-        <AnimatePresence
-          initial={false}
-          custom={direction}
-        >
+      {/*
+        IMAGE STAGE
+        ------------------------------------------------------------------
+        The box itself is sized purely with CSS aspect-ratio utilities, so
+        it always has the right shape the instant the page paints - no
+        waiting on JS, no layout shift, and no way for it to overflow the
+        viewport width (w-full + aspect-ratio derives height from width).
+
+        - Mobile (<768px): tall vertical banner, matches a 1080x1600 /
+          1080x1920 image almost exactly, so object-contain shows the full
+          banner (heading, product, CTA, features) with no cropping and no
+          dead space.
+        - md and up (>=768px): wide landscape banner, same footprint as the
+          original desktop design.
+      */}
+      <div
+        className="
+          relative
+          w-full
+
+          aspect-[1080/1600]
+
+          md:aspect-[1920/700]
+          lg:aspect-[1920/650]
+        "
+      >
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={page}
             custom={direction}
@@ -125,76 +176,35 @@ export default function HeroSlider() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="
-              absolute
-              inset-0
-              w-full
-              h-full
-              flex
-              items-center
-              justify-center
-            "
+            className="absolute inset-0 w-full h-full"
           >
-            {/* IMAGE CONTAINER */}
-            <div className="relative w-full h-full">
-              {/*
-                Soft blurred backdrop (mobile / tablet / small-laptop only).
-                Our hero photos are landscape-ish (~1.5:1) while the mobile
-                hero box is short (~350-400px), so a full-bleed object-contain
-                image always ends up touching the left/right edges with
-                empty space above and below it. Instead of leaving that gap
-                plain, we fill it with a blurred, tinted copy of the same
-                image so the section reads as one cohesive "banner" rather
-                than a photo floating on bare background.
-                Hidden on lg+ so the existing desktop look is untouched.
-              */}
-              <div
-                className="absolute inset-0 overflow-hidden lg:hidden"
-                aria-hidden="true"
-              >
+            {isMobile ? (
+              <div className="relative w-full h-full bg-[#FAF9F6]">
                 <Image
-                  src={heroSlides[slideIndex].image}
-                  alt=""
+                  src={currentSlide.mobileImage}
+                  alt={currentSlide.title}
                   fill
+                  priority={slideIndex === 0}
                   sizes="100vw"
-                  className="object-cover scale-125 blur-2xl opacity-40 select-none"
+                  // Never crop the mobile banner - it carries the heading,
+                  // description, CTA and product shot baked into the
+                  // artwork, so object-contain (not object-cover) keeps
+                  // every bit of that content visible.
+                  className="object-contain object-center select-none"
                 />
-                <div className="absolute inset-0 bg-[#FAF9F6]/70" />
               </div>
-
-              {/*
-                Foreground: the COMPLETE, un-cropped hero image.
-                Inset padding below lg keeps the photo from touching the
-                screen edges edge-to-edge, so on phones it reads as a
-                framed, balanced banner image instead of one long thin
-                strip - without ever cropping any part of the picture
-                (object-contain never crops, only letterboxes).
-                lg+ keeps the original edge-to-edge layout untouched.
-              */}
-             <div 
- className="
-   relative w-full h-full 
-   flex items-center justify-center
-   px-0
-   py-0
- "
->
-                <div className="relative w-full h-full drop-shadow-lg lg:drop-shadow-none">
-                  <Image
-                    src={heroSlides[slideIndex].image}
-                    alt={heroSlides[slideIndex].title}
-                    fill
-                    priority
-                    sizes="100vw"
-                  className="
-  object-contain
-  object-center
-  select-none
-"
-                  />
-                </div>
+            ) : (
+              <div className="relative w-full h-full">
+                <Image
+                  src={currentSlide.desktopImage}
+                  alt={currentSlide.title}
+                  fill
+                  priority={slideIndex === 0}
+                  sizes="100vw"
+                  className="object-cover object-center select-none"
+                />
               </div>
-            </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -327,17 +337,10 @@ export default function HeroSlider() {
           <button
             key={idx}
             onClick={() => {
-              const currentIdx = Math.abs(
-                page % heroSlides.length
-              );
+              const currentIdx = Math.abs(page % heroSlides.length);
+              const dir = idx > currentIdx ? 1 : -1;
 
-              const dir =
-                idx > currentIdx ? 1 : -1;
-
-              setPage([
-                page + (idx - currentIdx),
-                dir,
-              ]);
+              setPage([page + (idx - currentIdx), dir]);
             }}
             className={`
               h-2.5

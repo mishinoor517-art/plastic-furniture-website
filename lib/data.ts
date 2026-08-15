@@ -14,7 +14,10 @@ export interface NavCategory {
 
 export interface HeroSlide {
   id: number;
-  image: string;
+  /** Wide landscape banner for tablet/laptop/desktop. Recommended 1920x700 or 1920x900. */
+  desktopImage: string;
+  /** Tall vertical banner for mobile phones. Recommended 1080x1600 or 1080x1920. */
+  mobileImage: string;
   tagline: string;
   title: string;
   description: string;
@@ -238,7 +241,11 @@ export const navCategories: NavCategory[] = [
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    image: "/images/hero-1.png",
+    desktopImage: "/images/hero-1.jpg",
+    // TODO: replace with a dedicated 1080x1600 (or 1080x1920) vertical banner.
+    // Until a real mobile asset is dropped in at this path, it falls back to
+    // the desktop image so the build never breaks.
+    mobileImage: "/images/hero-1.png", // TODO: swap for /images/mobile/hero-1-mobile.jpg (1080x1600)
     tagline: "Relax in Style",
     title: "MODERN LOUNGE CHAIR",
     description:
@@ -249,7 +256,8 @@ export const heroSlides: HeroSlide[] = [
 
   {
     id: 2,
-    image: "/images/hero-2.jpg",
+    desktopImage: "/images/hero-2.jpg",
+    mobileImage: "/images/hero-2.png", // TODO: swap for /images/mobile/hero-2-mobile.jpg (1080x1600)
     tagline: "Royal Comfort",
     title: "PREMIUM MOULDED ARM CHAIR",
     description:
@@ -258,11 +266,10 @@ export const heroSlides: HeroSlide[] = [
     shopHref: "#products",
   },
 
- 
-
   {
     id: 4,
-    image: "/images/hero-6.jpg",
+    desktopImage: "/images/hero-6.jpg",
+    mobileImage: "/images/hero-6.png", // TODO: swap for /images/mobile/hero-6-mobile.jpg (1080x1600)
     tagline: "Modern Comfort. Everyday Style.",
     title: "NEXORA DINING CHAIR",
     description:
@@ -273,7 +280,8 @@ export const heroSlides: HeroSlide[] = [
 
   {
     id: 5,
-    image: "/images/hero-5.jpg",
+    desktopImage: "/images/hero-5.jpg",
+    mobileImage: "/images/hero-5.png", // TODO: swap for /images/mobile/hero-5-mobile.jpg (1080x1600)
     tagline: "Elegance Arm Chair",
     title: "MOULDED FOR COMFORT",
     description:
@@ -284,7 +292,8 @@ export const heroSlides: HeroSlide[] = [
 
   {
     id: 6,
-    image: "/images/hero-7.jpg",
+    desktopImage: "/images/hero-7.jpg",
+    mobileImage: "/images/hero-7.png", // TODO: swap for /images/mobile/hero-7-mobile.jpg (1080x1600)
     tagline: "Learn. Play. Grow.",
     title: "KIDS STUDY TABLE & CHAIR",
     description:
